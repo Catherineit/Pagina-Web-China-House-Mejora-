@@ -558,51 +558,90 @@ main {
 }
 
 .category-grid {
-  gap: 13px;
+  gap: 16px;
+  align-items: stretch;
 }
 
 .category-card {
-  padding: 7px 7px 12px;
-  border: 1px solid #cba766;
-  border-radius: 6px;
-  background: #f6e6c9;
-  box-shadow: 0 2px 0 rgba(112, 57, 29, .16);
+  min-width: 0;
+  height: 100%;
+  padding: 0 0 14px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e4d5c1;
+  border-radius: 8px;
+  background: #fffdf8;
+  box-shadow: 0 5px 16px rgba(86, 48, 30, .08);
+  overflow: hidden;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
 }
 
 .category-image {
-  margin-bottom: 9px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 12px;
+  position: relative;
+  display: block;
+  overflow: hidden;
   border: 0;
-  border-radius: 3px;
-  background: #191616;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1);
+  border-radius: 0;
+  background: #f3e8d7;
 }
 
 .category-card:nth-child(even) .category-image {
-  background: #191616;
+  background: #f3e8d7;
 }
 
-.category-card:hover .category-image,
-.category-card.active .category-image {
-  box-shadow: 0 7px 14px rgba(82, 28, 23, .2);
+.category-card:hover,
+.category-card.active {
+  transform: translateY(-4px);
+  border-color: #cba766;
+  box-shadow: 0 12px 24px rgba(86, 48, 30, .14);
 }
 
 .category-card.active .category-image {
   outline: 2px solid #8e181d;
-  outline-offset: 2px;
+  outline-offset: -2px;
 }
 
 .category-image img {
-  padding: 7px;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  object-fit: cover;
   mix-blend-mode: normal;
+  transition: transform 300ms ease;
+}
+
+.category-card:hover .category-image img,
+.category-card.active .category-image img {
+  transform: scale(1.03);
 }
 
 .category-card strong {
-  font-size: 14px;
+  margin: 0 10px;
+  color: #5a2724;
+  font-family: "Marcellus", serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.25;
 }
 
 .category-card small {
-  font-size: 8px;
+  margin-top: 7px;
+  color: #9a7770;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.category-card small span {
+  color: #a72b30;
+  font-size: 12px;
+  letter-spacing: 0;
 }
 
 .benefits {
@@ -749,7 +788,16 @@ footer {
   }
 
   .category-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .category-section .section-title > a {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding-bottom: 4px;
+    font-size: 9px;
   }
 
   .product-grid {

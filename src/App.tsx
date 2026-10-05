@@ -381,7 +381,7 @@ export default function App() {
             >
               <span className="category-image"><img src={category.image} alt="" /></span>
               <strong>{category.name}</strong>
-              <small>Ver productos</small>
+              <small>Ver productos <span aria-hidden="true">→</span></small>
             </button>
           ))}
         </div>
