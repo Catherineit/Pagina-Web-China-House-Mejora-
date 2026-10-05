@@ -1,30 +1,36 @@
 import { useMemo, useState } from "react";
 import logoImage from "./assets/china-house-market-logo.png";
+import ramenCategoryImage from "./assets/Ramen.jpg";
+import snacksCategoryImage from "./assets/Snacks.png";
+import beveragesCategoryImage from "./assets/Bebestibles.png";
+import saucesCategoryImage from "./assets/Salsas.png";
+import infusionsCategoryImage from "./assets/Infusiones.png";
+import homeCategoryImage from "./assets/Hogar.png";
 
 const categories = [
   {
     name: "Ramen",
-    image: "https://dojiw2m9tvv09.cloudfront.net/22913/2/ramen9042.jpeg",
+    image: ramenCategoryImage,
   },
   {
     name: "Snacks",
-    image: "https://dojiw2m9tvv09.cloudfront.net/22913/2/haitai-honey-butter-chip-snack-11522.jpg",
+    image: snacksCategoryImage,
   },
   {
     name: "Bebestibles",
-    image: "https://dojiw2m9tvv09.cloudfront.net/22913/2/bebestibles9125.png",
+    image: beveragesCategoryImage,
   },
   {
     name: "Salsas",
-    image: "https://dojiw2m9tvv09.cloudfront.net/22913/2/salsas9126.JPG",
+    image: saucesCategoryImage,
   },
   {
     name: "Infusiones",
-    image: "https://dojiw2m9tvv09.cloudfront.net/22913/2/infusiones9126.png",
+    image: infusionsCategoryImage,
   },
   {
     name: "Hogar",
-    image: "https://dojiw2m9tvv09.cloudfront.net/22913/2/decoracion9126.png",
+    image: homeCategoryImage,
   },
 ];
 
