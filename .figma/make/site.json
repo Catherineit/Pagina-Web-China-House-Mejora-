@@ -1,0 +1,10 @@
+{
+  "description": "Showcases Asian-inspired design for China House Market, featuring pastel colors and cherry blossoms to attract customers and enhance user experience.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
