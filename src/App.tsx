@@ -6,6 +6,16 @@ import beveragesCategoryImage from "./assets/Bebestibles.png";
 import saucesCategoryImage from "./assets/Salsas.png";
 import infusionsCategoryImage from "./assets/Infusiones.png";
 import homeCategoryImage from "./assets/Hogar.png";
+import adornoBuenaFortunaImage from "./assets/product-adorno-buena-fortuna.jpg";
+import bowlChanchitoImage from "./assets/product-bowl-chanchito.jpg";
+import bowlGatitoImage from "./assets/product-bowl-gatito.jpg";
+import bowlPandaImage from "./assets/product-bowl-panda.jpg";
+import calpisUvaImage from "./assets/product-calpis-uva.jpg";
+import honeyButterChipsImage from "./assets/product-honey-butter-chips.jpg";
+import masaGyozasImage from "./assets/product-masa-gyozas.jpg";
+import packSojuImage from "./assets/product-pack-soju.jpg";
+import salsaSoyaImage from "./assets/product-salsa-soya.jpg";
+import teOrientalImage from "./assets/product-te-oriental.jpg";
 
 const categories = [
   {
@@ -39,80 +49,70 @@ const products = [
     name: "Bowl para Ramen con Tapa Panda",
     category: "Ramen",
     price: "$13.800",
-    image:
-      "https://dojiw2m9tvv09.cloudfront.net/22913/product/imagen-2025-03-25-1626405870985.png",
+    image: bowlPandaImage,
     badge: "Nuevo",
   },
   {
     name: "Calpis Uva 500 ml",
     category: "Bebestibles",
     price: "$2.500",
-    image:
-      "https://dojiw2m9tvv09.cloudfront.net/22913/product/tb2pgoongatbunjsszfxxxgfpxa_-21385812926015.jpg",
+    image: calpisUvaImage,
     badge: "Favorito",
   },
   {
     name: "Pack Soju Jinro",
     category: "Bebestibles",
     price: "$13.000",
-    image:
-      "https://dojiw2m9tvv09.cloudfront.net/22913/product/imagen-2025-04-07-1545026883076.png",
+    image: packSojuImage,
     badge: "Pack",
   },
   {
     name: "Bowl Ramen Gatito Cat Time",
     category: "Hogar",
     price: "$13.800",
-    image:
-      "https://dojiw2m9tvv09.cloudfront.net/22913/product/o1cn01v99k3r1oyxjhdnrkf_-1117461774_800x800q907497.jpg",
+    image: bowlGatitoImage,
     badge: "Nuevo",
   },
   {
     name: "Salsa de Soya CHM 1,79 L",
     category: "Salsas",
     price: "$5.900",
-    image:
-      "https://dojiw2m9tvv09.cloudfront.net/22913/product/silicone-animal-head-children-study-silicone-chopsticks-holder-4-1-3-5-3-10-3-656474208.png",
+    image: salsaSoyaImage,
     badge: "Esencial",
   },
   {
     name: "Masa para Gyozas 310 g",
     category: "Congelados",
     price: "$2.800",
-    image:
-      "https://dojiw2m9tvv09.cloudfront.net/22913/product/2_84652455ee18164cba3e8c06b5fe04fe3275.jpg",
+    image: masaGyozasImage,
     badge: "Popular",
   },
   {
     name: "Bowl Cerámica Ramen Chanchito",
     category: "Hogar",
     price: "$13.800",
-    image:
-      "https://dojiw2m9tvv09.cloudfront.net/22913/product/l_silicone-animal-head-children-study-silicone-chopsticks-holder-4-1-3-1-1-1-1-2-3-27767-1-3-14659.jpg",
+    image: bowlChanchitoImage,
     badge: "Nuevo",
   },
   {
     name: "Adorno Oriental Buena Fortuna",
     category: "Hogar",
     price: "$1.800",
-    image:
-      "https://dojiw2m9tvv09.cloudfront.net/22913/product/imagen-2026-04-24-1337355656599.png",
+    image: adornoBuenaFortunaImage,
     badge: "Suerte",
   },
   {
     name: "Honey Butter Chips Haitai",
     category: "Snacks",
     price: "$3.200",
-    image:
-      "https://dojiw2m9tvv09.cloudfront.net/22913/2/haitai-honey-butter-chip-snack-11522.jpg",
+    image: honeyButterChipsImage,
     badge: "Corea",
   },
   {
     name: "Té oriental selección de la casa",
     category: "Infusiones",
     price: "$4.500",
-    image:
-      "https://dojiw2m9tvv09.cloudfront.net/22913/2/infusiones9126.png",
+    image: teOrientalImage,
     badge: "Selección",
   },
 ];
@@ -379,7 +379,7 @@ export default function App() {
                 document.querySelector("#productos")?.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              <span className="category-image"><img src={category.image} alt="" /></span>
+              <span className="category-image"><img src={category.image} alt="" loading="lazy" /></span>
               <strong>{category.name}</strong>
               <small>Ver productos <span aria-hidden="true">→</span></small>
             </button>
@@ -423,7 +423,7 @@ export default function App() {
                   >
                     <Icon name="heart" size={19} />
                   </button>
-                  <img src={product.image} alt={product.name} />
+                  <img src={product.image} alt={product.name} loading="lazy" />
                   <button className="add-button" onClick={() => setCartCount((count) => count + 1)}>Añadir al carrito</button>
                 </div>
                 <div className="product-info">
@@ -445,11 +445,11 @@ export default function App() {
       <section className="promo-grid">
         <article className="promo-card red">
           <div><span className="eyebrow">El favorito de todos</span><h2>Tu ramen, a tu manera</h2><p>Picante, suave, clásico o con queso. Encuentra tu próximo favorito.</p><a href="#productos" onClick={() => setActiveCategory("Ramen")}>Explorar ramen <Icon name="arrow" /></a></div>
-          <img src="https://dojiw2m9tvv09.cloudfront.net/22913/2/m-categoriaramen83233772.jpg" alt="Selección de ramen oriental" />
+          <img src="https://dojiw2m9tvv09.cloudfront.net/22913/2/m-categoriaramen83233772.jpg" alt="Selección de ramen oriental" loading="lazy" />
         </article>
         <article className="promo-card pink">
           <div><span className="eyebrow">Dulce descubrimiento</span><h2>Snacks para compartir</h2><p>Sabores curiosos, ediciones especiales y tus clásicos favoritos.</p><a href="#productos" onClick={() => setActiveCategory("Snacks")}>Ver snacks <Icon name="arrow" /></a></div>
-          <img src="https://dojiw2m9tvv09.cloudfront.net/22913/2/haitai-honey-butter-chip-snack-11522.jpg" alt="Snacks asiáticos" />
+          <img src="https://dojiw2m9tvv09.cloudfront.net/22913/2/haitai-honey-butter-chip-snack-11522.jpg" alt="Snacks asiáticos" loading="lazy" />
         </article>
       </section>
 
