@@ -97,7 +97,8 @@ h1, h2, h3, p { margin-top: 0; }
   padding: 55px 6vw; position: absolute; top: 100%; left: 0;
   display: grid; grid-template-columns: 1.2fr .8fr; gap: 55px;
   background: #fffaf0; box-shadow: 16px 24px 40px rgba(70, 34, 29, .14);
-  transform: translateX(-105%); transition: transform 280ms ease;
+  transform: translateX(-105%); transition: transform 220ms ease;
+  will-change: transform;
 }
 .nav-drawer.open { transform: translateX(0); }
 .nav-kicker, .eyebrow {
@@ -1505,6 +1506,55 @@ footer div > a:hover {
 
   .footer-brand {
     grid-column: 1;
+  }
+}
+
+.nav-drawer .nav-link {
+  --menu-shift-x: 0px;
+  --menu-shift-y: 0px;
+  position: relative;
+  transform: translate3d(var(--menu-shift-x), var(--menu-shift-y), 0);
+  transition: transform 180ms ease, color 180ms ease;
+}
+
+.nav-drawer .nav-link::after {
+  content: "";
+  position: absolute;
+  right: 38px;
+  bottom: 7px;
+  left: 0;
+  height: 1px;
+  background: #c12c35;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-drawer .nav-link:hover {
+    color: #a9232a;
+  }
+
+  .nav-drawer .nav-link:hover::after,
+  .nav-drawer .nav-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+}
+
+.nav-drawer .nav-link:focus-visible {
+  outline: 2px solid #cba766;
+  outline-offset: 4px;
+  color: #a9232a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-drawer {
+    transition: none;
+  }
+
+  .nav-drawer .nav-link,
+  .nav-drawer .nav-link::after {
+    transition: none;
   }
 }
 

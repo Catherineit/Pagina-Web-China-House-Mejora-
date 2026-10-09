@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, type PointerEvent } from "react";
 import logoImage from "./assets/china-house-market-logo.png";
 import ramenCategoryImage from "./assets/Ramen.jpg";
 import snacksCategoryImage from "./assets/Snacks.png";
@@ -116,6 +116,22 @@ const products = [
     badge: "Selección",
   },
 ];
+
+function handleMenuPointerMove(event: PointerEvent<HTMLAnchorElement>) {
+  if (event.pointerType !== "mouse") return;
+
+  const bounds = event.currentTarget.getBoundingClientRect();
+  const offsetX = ((event.clientX - bounds.left) / bounds.width - 0.5) * 8;
+  const offsetY = ((event.clientY - bounds.top) / bounds.height - 0.5) * 4;
+
+  event.currentTarget.style.setProperty("--menu-shift-x", `${offsetX.toFixed(2)}px`);
+  event.currentTarget.style.setProperty("--menu-shift-y", `${offsetY.toFixed(2)}px`);
+}
+
+function resetMenuPointerPosition(event: PointerEvent<HTMLAnchorElement>) {
+  event.currentTarget.style.setProperty("--menu-shift-x", "0px");
+  event.currentTarget.style.setProperty("--menu-shift-y", "0px");
+}
 
 function Icon({
   name,
@@ -245,7 +261,13 @@ export default function App() {
 
       <header className="site-header">
         <div className="header-start">
-          <button className="header-action menu-trigger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Abrir menú">
+          <button
+            className="header-action menu-trigger"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={menuOpen}
+            aria-controls="product-menu"
+          >
             <Icon name={menuOpen ? "close" : "menu"} />
             <span>Menú</span>
           </button>
@@ -280,13 +302,26 @@ export default function App() {
             <Icon name="bag" /><span>Carrito</span><b>{cartCount}</b>
           </button>
         </div>
-        <nav className={menuOpen ? "nav-drawer open" : "nav-drawer"} aria-label="Menú de productos">
+        <nav
+          id="product-menu"
+          className={menuOpen ? "nav-drawer open" : "nav-drawer"}
+          aria-label="Menú de productos"
+          onPointerEnter={(event) => {
+            if (event.pointerType === "mouse") setMenuOpen(true);
+          }}
+          onPointerLeave={(event) => {
+            if (event.pointerType === "mouse") setMenuOpen(false);
+          }}
+        >
           <div>
             <span className="nav-kicker">Explora la tienda</span>
             {["Novedades", "Ramen", "Snacks", "Bebestibles", "Salsas", "Congelados", "Hogar"].map((item) => (
               <a
                 key={item}
+                className="nav-link"
                 href="#productos"
+                onPointerMove={handleMenuPointerMove}
+                onPointerLeave={resetMenuPointerPosition}
                 onClick={() => {
                   setActiveCategory(item === "Novedades" ? "Todos" : item);
                   setMenuOpen(false);
